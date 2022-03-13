@@ -9,13 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cl.nooc.superheroes.R;
+import cl.nooc.superheroes.databinding.FragmentListBinding;
 
 public class ListFragment extends Fragment {
+
+    private FragmentListBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        binding = FragmentListBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 }
