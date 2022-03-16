@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lista">Lista</string>
     <string name="favoritos">Favoritos</string>
+    <string name="nombre_real">Nombre real</string>
+    <string name="apodo">Apodo</string>
 </resources>

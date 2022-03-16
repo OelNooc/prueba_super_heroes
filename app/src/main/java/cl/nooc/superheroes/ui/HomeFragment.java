@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
 
         new Handler().postDelayed(()->{
             Navigation.findNavController(getView()).navigate(R.id.action_homeFragment_to_listFragment);
-        }, 5500);
+        }, 6000);
 
         return binding.getRoot();
     }
