@@ -51,6 +51,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLista"
             android:layout_width="385dp"
             android:layout_height="385dp"
             android:layout_margin="10dp"

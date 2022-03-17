@@ -21,6 +21,15 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.CustomViewHold
     private List<SuperRespuestaItem> lista = new ArrayList<>();
     private MiOnClickListener listener;
 
+    public void setLista(List<SuperRespuestaItem> lista) {
+        this.lista = lista;
+        notifyDataSetChanged();
+    }
+
+    public void setListener(MiOnClickListener listener) {
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
