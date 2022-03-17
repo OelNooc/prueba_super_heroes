@@ -6,4 +6,13 @@
     <string name="favoritos">Favoritos</string>
     <string name="nombre_real">Nombre real</string>
     <string name="apodo">Apodo</string>
+    <string name="altura">Altura</string>
+    <string name="peso">Peso</string>
+    <string name="velocidad">Velocidad</string>
+    <string name="combate">Combate</string>
+    <string name="durabilidad">Durabilidad</string>
+    <string name="inteligencia">Inteligencia</string>
+    <string name="fuerza">Fuerza</string>
+    <string name="poder">Poder</string>
+    <string name="editor">Editor</string>
 </resources>
