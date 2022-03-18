@@ -53,10 +53,8 @@ public class ListFragment extends Fragment {
             }
         });
 
-        viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuesta -> {
-            Logger.addLogAdapter(new AndroidLogAdapter());
-            com.orhanobut.logger.Logger.i("Respuesta", superRespuesta.toString());
-            adapter.setLista(superRespuesta.getSuperRespuesta());
+        viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuestaItems -> {
+            adapter.setLista(superRespuestaItems);
         });
     }
 }

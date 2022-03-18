@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import java.util.List;
+
 import cl.nooc.superheroes.cliente.ClienteRetrofit;
 import cl.nooc.superheroes.modelo.SuperRespuesta;
 import cl.nooc.superheroes.modelo.SuperRespuestaItem;
@@ -20,24 +22,27 @@ import retrofit2.Response;
 public class HeroViewModel extends AndroidViewModel {
 
     private SuperServicio servicio = ClienteRetrofit.getInstance(ClienteRetrofit.BASE_URL);
-    private MutableLiveData<SuperRespuesta> respuesta = new MutableLiveData<>();
+
+    private MutableLiveData<List<SuperRespuestaItem>> lista = new MutableLiveData<>();
     private MutableLiveData<SuperRespuestaItem> detalle = new MutableLiveData<>();
 
     public HeroViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public void llamarApi(){
-        servicio.getSupers().enqueue(new Callback<SuperRespuesta>() {
+    public void llamarApi() {
+        servicio.getSupers().enqueue(new Callback<List<SuperRespuestaItem>>() {
             @Override
-            public void onResponse(Call<SuperRespuesta> call, Response<SuperRespuesta> response) {
-                respuesta.postValue(response.body());
+            public void onResponse(Call<List<SuperRespuestaItem>> call, Response<List<SuperRespuestaItem>> response) {
+                lista.postValue(response.body());
+                Logger.addLogAdapter(new AndroidLogAdapter());
+                Logger.d(response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<SuperRespuesta> call, Throwable t) {
+            public void onFailure(Call<List<SuperRespuestaItem>> call, Throwable t) {
                 Logger.addLogAdapter(new AndroidLogAdapter());
-                Logger.i("API", t.getMessage());
+                Logger.d(t.getMessage());
                 call.cancel();
             }
         });
@@ -47,8 +52,8 @@ public class HeroViewModel extends AndroidViewModel {
         detalle.setValue(superRespuestaItem);
     }
 
-    public MutableLiveData<SuperRespuesta> getRespuesta() {
-        return respuesta;
+    public MutableLiveData<List<SuperRespuestaItem>> getRespuesta() {
+        return lista;
     }
 
     public MutableLiveData<SuperRespuestaItem> getDetalle() {

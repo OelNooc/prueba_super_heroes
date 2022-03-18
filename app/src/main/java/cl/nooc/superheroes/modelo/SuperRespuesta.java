@@ -12,6 +12,10 @@ public class SuperRespuesta{
 		return superRespuesta;
 	}
 
+	public void setSuperRespuesta(List<SuperRespuestaItem> superRespuesta) {
+		this.superRespuesta = superRespuesta;
+	}
+
 	@Override
  	public String toString(){
 		return 
