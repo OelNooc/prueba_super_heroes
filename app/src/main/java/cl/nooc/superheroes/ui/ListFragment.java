@@ -13,8 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+import com.google.android.material.button.MaterialButtonToggleGroup;
+
+import java.io.Serializable;
 
 import cl.nooc.superheroes.R;
 import cl.nooc.superheroes.adapter.HeroAdapter;
@@ -41,20 +42,22 @@ public class ListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         adapter = new HeroAdapter();
+
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         binding.rvLista.setAdapter(adapter);
         binding.rvLista.setLayoutManager(manager);
 
-        adapter.setListener(new HeroAdapter.MiOnClickListener() {
-            @Override
-            public void onClickListener(SuperRespuestaItem superRespuestaItem) {
-                viewModel.obtenerDetalle(superRespuestaItem);
-                Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_detailFragment);
-            }
+        adapter.setListener(superRespuestaItem -> {
+            viewModel.obtenerDetalle(superRespuestaItem);
+            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_detailFragment);
         });
 
         viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuestaItems -> {
             adapter.setLista(superRespuestaItems);
+        });
+
+        binding.toggleButton.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+
         });
     }
 }

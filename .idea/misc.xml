@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/drawable/fondo.xml" value="0.103" />
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/cards_layout.xml" value="0.2" />
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/fragment_list.xml" value="0.22" />
-        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/item_layout.xml" value="0.33" />
+        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/fragment_list.xml" value="0.33" />
+        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/item2_layout.xml" value="0.33" />
+        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/item_layout.xml" value="0.25" />
       </map>
     </option>
   </component>

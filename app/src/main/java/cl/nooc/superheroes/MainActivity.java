@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(HeroViewModel.class);
         viewModel.llamarApi();
-        Logger.addLogAdapter(new AndroidLogAdapter());
-        Logger.d(viewModel.getRespuesta().toString());
 
         mp = MediaPlayer.create(this, R.raw.marvel_intro);
         mp.setLooping(true);

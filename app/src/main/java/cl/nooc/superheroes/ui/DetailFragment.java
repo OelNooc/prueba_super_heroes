@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import cl.nooc.superheroes.R;
 import cl.nooc.superheroes.databinding.FragmentDetailBinding;
+import cl.nooc.superheroes.modelo.SuperRespuestaItem;
 import cl.nooc.superheroes.viewmodel.HeroViewModel;
 
 public class DetailFragment extends Fragment {

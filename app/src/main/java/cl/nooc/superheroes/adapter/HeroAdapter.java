@@ -60,6 +60,7 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.CustomViewHold
 
             Picasso.get().load(superRespuestaItem.getImages().getSm()).into(binding.ivImagen);
             binding.tvNombre.setText(superRespuestaItem.getName());
+            binding.tvocupacion.setText(superRespuestaItem.getWork().getOccupation());
 
             itemView.setOnClickListener(v -> {
                 listener.onClickListener(superRespuestaItem);

@@ -2,7 +2,9 @@ package cl.nooc.superheroes.modelo;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SuperRespuestaItem{
+import java.io.Serializable;
+
+public class SuperRespuestaItem implements Serializable {
 
 	@SerializedName("images")
 	private Images images;
