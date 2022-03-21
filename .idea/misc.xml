@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/drawable/fondo.xml" value="0.103" />
+        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/drawable/star_fav.xml" value="0.175" />
+        <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/drawable/star_fav_add.xml" value="0.175" />
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/cards_layout.xml" value="0.2" />
         <entry key="..\:/Users/leomu/Desktop/DesafioLATAM/Android/AndroidJava/SuperHeroes/app/src/main/res/layout/fragment_detail.xml" value="0.25" />

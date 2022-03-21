@@ -20,6 +20,7 @@ public class DetailFragment extends Fragment {
 
     private FragmentDetailBinding binding;
     private HeroViewModel viewModel;
+    private boolean img = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +37,18 @@ public class DetailFragment extends Fragment {
             Picasso.get().load(superRespuestaItem.getImages().getSm()).into(binding.ivDetail);
         });
 
+        binding.ivFav.setOnClickListener(v -> {
+            if(img){
+            img = false;
+            binding.ivFav.setImageResource(R.drawable.star_fav);
+            } else{
+            img = true;
+            binding.ivFav.setImageResource(R.drawable.star_fav_add);
+            }
+
+        });
+
         return binding.getRoot();
     }
+
 }
