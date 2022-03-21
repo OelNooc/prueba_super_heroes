@@ -45,7 +45,7 @@ public class ClienteRetrofitTest {
     }
 
     @Test
-    public void getInstance() {
+    public void getInstanceTest() {
 
         SuperServicio servicio = ClienteRetrofit.getInstance(url);
         try{

@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -19,16 +20,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HeroViewModel extends AndroidViewModel {
+public class HeroViewModel extends ViewModel {
 
     private SuperServicio servicio = ClienteRetrofit.getInstance(ClienteRetrofit.BASE_URL);
 
     private MutableLiveData<List<SuperRespuestaItem>> lista = new MutableLiveData<>();
     private MutableLiveData<SuperRespuestaItem> detalle = new MutableLiveData<>();
-
-    public HeroViewModel(@NonNull Application application) {
-        super(application);
-    }
 
     public void llamarApi() {
         servicio.getSupers().enqueue(new Callback<List<SuperRespuestaItem>>() {
