@@ -56,8 +56,14 @@ public class ListFragment extends Fragment {
             adapter.setLista(superRespuestaItems);
         });
 
-        binding.toggleButton.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+        binding.btnLista.setOnClickListener(v -> {
+            binding.btnLista.setEnabled(false);
+            binding.btnFavs.setEnabled(true);
+        });
 
+        binding.btnFavs.setOnClickListener(v -> {
+            binding.btnFavs.setEnabled(false);
+            binding.btnLista.setEnabled(true);
         });
     }
 }
