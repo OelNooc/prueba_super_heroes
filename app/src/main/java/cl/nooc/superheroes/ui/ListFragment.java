@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.io.Serializable;
+import java.util.List;
 
 import cl.nooc.superheroes.R;
 import cl.nooc.superheroes.adapter.HeroAdapter;
@@ -28,6 +29,8 @@ public class ListFragment extends Fragment {
     private FragmentListBinding binding;
     private HeroViewModel viewModel;
     private HeroAdapter adapter;
+    private List<SuperRespuestaItem> favs;
+    private boolean cambio = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,18 +55,16 @@ public class ListFragment extends Fragment {
             Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_detailFragment);
         });
 
-        viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuestaItems -> {
-            adapter.setLista(superRespuestaItems);
-        });
-
         binding.btnLista.setOnClickListener(v -> {
             binding.btnLista.setEnabled(false);
             binding.btnFavs.setEnabled(true);
+            cambio = false;
         });
 
         binding.btnFavs.setOnClickListener(v -> {
             binding.btnFavs.setEnabled(false);
             binding.btnLista.setEnabled(true);
+            cambio = true;
         });
     }
 }
