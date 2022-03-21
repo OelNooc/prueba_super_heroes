@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SuperHeroes</string>
+    <string name="lista">List</string>
+    <string name="favoritos">Favorites</string>
+    <string name="nombre_real">Real Name</string>
+    <string name="apodo">NickName</string>
+    <string name="altura">Height</string>
+    <string name="peso">Weight</string>
+    <string name="velocidad">Speed</string>
+    <string name="combate">Combat</string>
+    <string name="durabilidad">Durability</string>
+    <string name="inteligencia">Intelligence</string>
+    <string name="fuerza">Strong</string>
+    <string name="poder">Power</string>
+    <string name="editor">"Publishier: "</string>
+    <string name="ocupaci_n">"Ocupation: "</string>
+</resources>
