@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "593291044363",
+    "project_id": "super-heroes-6b08f",
+    "storage_bucket": "super-heroes-6b08f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593291044363:android:ea71e63be45f5c8482c90e",
+        "android_client_info": {
+          "package_name": "cl.nooc.superheroes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593291044363-cr46tt4u5japtfv72u5nn512odtgak3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cl.nooc.superheroes",
+            "certificate_hash": "9ad9dc54c13fb7e8259fe648383d301c996e9d48"
+          }
+        },
+        {
+          "client_id": "593291044363-vd8qebv50j9rm00ffrbtcpu6nh339mtk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHapArzK4qsTalTBgj2uCNc1U_WNo_Zko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593291044363-vd8qebv50j9rm00ffrbtcpu6nh339mtk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
