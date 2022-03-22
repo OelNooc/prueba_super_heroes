@@ -34,15 +34,12 @@ public class ListFragment extends Fragment {
     private FragmentListBinding binding;
     private HeroViewModel viewModel;
     private HeroAdapter adapter;
-    private FirebaseFirestore db;
-    private List<SuperRespuestaItem> favoritos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentListBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(HeroViewModel.class);
-        db = FirebaseFirestore.getInstance();
         return binding.getRoot();
     }
 
@@ -71,24 +68,8 @@ public class ListFragment extends Fragment {
         binding.btnLista.setBackgroundColor(Color.GRAY);
 
         binding.btnFavs.setOnClickListener(v -> {
-            listar();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("lista", (Serializable) favoritos);
-            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_favsFragment, bundle);
+            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_favsFragment);
         });
     }
 
-    private void listar(){
-        favoritos = new ArrayList<>();
-
-        db.collection("supers").get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                for(SuperRespuestaItem item : task.getResult().toObjects(SuperRespuestaItem.class)){
-                    favoritos.add(item);
-                    Logger.addLogAdapter(new AndroidLogAdapter());
-                    Logger.i(item.toString());
-                }
-            }
-        });
-    }
 }

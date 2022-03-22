@@ -32,6 +32,7 @@ public class FavsFragment extends Fragment {
     private FragmentFavsBinding binding;
     private HeroViewModel viewModel;
     private HeroAdapter adapter;
+    private FirebaseFirestore db;
     private  List<SuperRespuestaItem> favoritos;
 
     @Override
@@ -39,7 +40,7 @@ public class FavsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentFavsBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(HeroViewModel.class);
-
+        db = FirebaseFirestore.getInstance();
         return binding.getRoot();
     }
 
@@ -60,19 +61,35 @@ public class FavsFragment extends Fragment {
             Navigation.findNavController(getView()).navigate(R.id.action_favsFragment_to_detailFragment, b);
         });
 
-        favoritos = (List<SuperRespuestaItem>) getArguments().getSerializable("lista");
+        listar();
         Logger.addLogAdapter(new AndroidLogAdapter());
         Logger.i(favoritos.toString());
 
         viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuestaItems -> {
-            adapter.setLista(favoritos);
+            adapter.setLista(superRespuestaItems);
         });
 
         binding.btnFavs1.setEnabled(false);
         binding.btnFavs1.setBackgroundColor(Color.GRAY);
 
         binding.btnLista1.setOnClickListener(v -> {
+            viewModel.llamarApi();
             Navigation.findNavController(getView()).navigate(R.id.action_favsFragment_to_listFragment);
+        });
+    }
+
+    private void listar(){
+        favoritos = new ArrayList<>();
+
+        db.collection("supers").get().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                for(SuperRespuestaItem item : task.getResult().toObjects(SuperRespuestaItem.class)){
+                    favoritos.add(item);
+                    Logger.addLogAdapter(new AndroidLogAdapter());
+                    Logger.i(item.toString());
+                }
+                viewModel.getRespuesta().postValue(favoritos);
+            }
         });
     }
 
