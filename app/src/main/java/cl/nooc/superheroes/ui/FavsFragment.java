@@ -2,6 +2,9 @@ package cl.nooc.superheroes.ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,11 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -25,24 +23,23 @@ import java.util.List;
 
 import cl.nooc.superheroes.R;
 import cl.nooc.superheroes.adapter.HeroAdapter;
-import cl.nooc.superheroes.databinding.FragmentListBinding;
+import cl.nooc.superheroes.databinding.FragmentFavsBinding;
 import cl.nooc.superheroes.modelo.SuperRespuestaItem;
 import cl.nooc.superheroes.viewmodel.HeroViewModel;
 
-public class ListFragment extends Fragment {
+public class FavsFragment extends Fragment {
 
-    private FragmentListBinding binding;
+    private FragmentFavsBinding binding;
     private HeroViewModel viewModel;
     private HeroAdapter adapter;
-    private FirebaseFirestore db;
-    private List<SuperRespuestaItem> favoritos;
+    private  List<SuperRespuestaItem> favoritos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentListBinding.inflate(inflater, container, false);
+        binding = FragmentFavsBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(HeroViewModel.class);
-        db = FirebaseFirestore.getInstance();
+
         return binding.getRoot();
     }
 
@@ -53,42 +50,30 @@ public class ListFragment extends Fragment {
         adapter = new HeroAdapter();
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        binding.rvLista.setAdapter(adapter);
-        binding.rvLista.setLayoutManager(manager);
+        binding.rvLista1.setAdapter(adapter);
+        binding.rvLista1.setLayoutManager(manager);
 
         adapter.setListener(superRespuestaItem -> {
             viewModel.obtenerDetalle(superRespuestaItem);
             Bundle b = new Bundle();
             b.putSerializable("item", (Serializable) superRespuestaItem);
-            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_detailFragment, b);
+            Navigation.findNavController(getView()).navigate(R.id.action_favsFragment_to_detailFragment, b);
         });
+
+        favoritos = (List<SuperRespuestaItem>) getArguments().getSerializable("lista");
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        Logger.i(favoritos.toString());
 
         viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuestaItems -> {
-            adapter.setLista(superRespuestaItems);
+            adapter.setLista(favoritos);
         });
 
-        binding.btnLista.setEnabled(false);
-        binding.btnLista.setBackgroundColor(Color.GRAY);
+        binding.btnFavs1.setEnabled(false);
+        binding.btnFavs1.setBackgroundColor(Color.GRAY);
 
-        binding.btnFavs.setOnClickListener(v -> {
-            listar();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("lista", (Serializable) favoritos);
-            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_favsFragment, bundle);
+        binding.btnLista1.setOnClickListener(v -> {
+            Navigation.findNavController(getView()).navigate(R.id.action_favsFragment_to_listFragment);
         });
     }
 
-    private void listar(){
-        favoritos = new ArrayList<>();
-
-        db.collection("supers").get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                for(SuperRespuestaItem item : task.getResult().toObjects(SuperRespuestaItem.class)){
-                    favoritos.add(item);
-                    Logger.addLogAdapter(new AndroidLogAdapter());
-                    Logger.i(item.toString());
-                }
-            }
-        });
-    }
 }
