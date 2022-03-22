@@ -29,7 +29,6 @@ public class ListFragment extends Fragment {
     private FragmentListBinding binding;
     private HeroViewModel viewModel;
     private HeroAdapter adapter;
-    private List<SuperRespuestaItem> favs;
     private boolean cambio = false;
 
     @Override
@@ -52,7 +51,13 @@ public class ListFragment extends Fragment {
 
         adapter.setListener(superRespuestaItem -> {
             viewModel.obtenerDetalle(superRespuestaItem);
-            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_detailFragment);
+            Bundle b = new Bundle();
+            b.putSerializable("item", (Serializable) superRespuestaItem);
+            Navigation.findNavController(getView()).navigate(R.id.action_listFragment_to_detailFragment, b);
+        });
+
+        viewModel.getRespuesta().observe(getViewLifecycleOwner(), superRespuestaItems -> {
+            adapter.setLista(superRespuestaItems);
         });
 
         binding.btnLista.setOnClickListener(v -> {
@@ -67,4 +72,5 @@ public class ListFragment extends Fragment {
             cambio = true;
         });
     }
+
 }
